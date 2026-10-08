@@ -1,0 +1,8 @@
+<%- include('_header') %><h2>Dashboard</h2>
+<div class="stats">
+<div class="card"><b><%= counts['Todo'] %></b>To Do</div>
+<div class="card"><b><%= counts['In Progress'] %></b>In Progress</div>
+<div class="card"><b><%= counts['Done'] %></b>Done</div>
+<div class="card"><b style="color:#c0392b"><%= overdue %></b>Overdue</div>
+<div class="card"><b><%= projects %></b>Projects</div></div>
+<%- include('_footer') %>

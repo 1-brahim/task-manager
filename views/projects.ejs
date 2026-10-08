@@ -1,0 +1,7 @@
+<%- include('_header') %><h2>Projects <a class="btn" href="/projects/new">+ New</a></h2>
+<div class="card"><table><tr><th>Name</th><th>Description</th><th>Tasks</th><th></th></tr>
+<% projects.forEach(p => { %><tr><td><%= p.name %></td><td><%= p.description %></td><td><%= p.task_count %></td>
+<td><a class="btn" href="/projects/<%= p.id %>/edit">Edit</a>
+<form class="i" method="post" action="/projects/<%= p.id %>/delete" onsubmit="return confirm('Delete project?')"><button class="danger">Delete</button></form></td></tr>
+<% }) %><% if (!projects.length) { %><tr><td colspan="4">No projects yet.</td></tr><% } %></table></div>
+<%- include('_footer') %>

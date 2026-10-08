@@ -1,0 +1,13 @@
+<%- include('_header') %><h2>Tasks <a class="btn" href="/tasks/new">+ New</a></h2>
+<div class="card"><form class="inline" method="get" action="/tasks">
+<input name="q" placeholder="Search title" value="<%= q %>">
+<select name="status"><option value="">All statuses</option><% STATUSES.forEach(s => { %><option <%= s === status ? 'selected' : '' %>><%= s %></option><% }) %></select>
+<select name="project"><option value="">All projects</option><% projects.forEach(p => { %><option value="<%= p.id %>" <%= String(p.id) === String(project) ? 'selected' : '' %>><%= p.name %></option><% }) %></select>
+<button>Filter</button></form></div>
+<div class="card"><table><tr><th>Title</th><th>Project</th><th>Priority</th><th>Status</th><th>Due</th><th></th></tr>
+<% tasks.forEach(t => { %><tr><td><%= t.title %></td><td><%= t.project_name || '-' %></td><td><%= t.priority %></td><td><%= t.status %></td><td><%= t.due_date || '-' %></td>
+<td><% if (t.status !== 'Done') { %><form class="i" method="post" action="/tasks/<%= t.id %>/done"><button>Done</button></form><% } %>
+<a class="btn" href="/tasks/<%= t.id %>/edit">Edit</a>
+<form class="i" method="post" action="/tasks/<%= t.id %>/delete" onsubmit="return confirm('Delete task?')"><button class="danger">Delete</button></form></td></tr>
+<% }) %><% if (!tasks.length) { %><tr><td colspan="6">No tasks found.</td></tr><% } %></table></div>
+<%- include('_footer') %>

@@ -1,0 +1,6 @@
+<%- include('_header') %><div class="card"><h2><%= project.id ? 'Edit' : 'New' %> project</h2>
+<% if (error) { %><div class="err"><%= error %></div><% } %>
+<form method="post" action="/projects<%= project.id ? '/' + project.id : '' %>">
+<label>Name</label><input name="name" value="<%= project.name || '' %>">
+<label>Description</label><input name="description" value="<%= project.description || '' %>">
+<button>Save</button></form></div><%- include('_footer') %>

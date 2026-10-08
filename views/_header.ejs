@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Task Manager</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#f4f6f8;color:#222}
+nav{background:#1f3a5f;padding:12px 24px;display:flex;gap:18px;align-items:center}
+nav a{color:#fff;text-decoration:none} nav .sp{flex:1}
+main{max-width:900px;margin:24px auto;padding:0 16px}
+.card{background:#fff;border-radius:8px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px #0002}
+table{width:100%;border-collapse:collapse} th,td{text-align:left;padding:8px;border-bottom:1px solid #eee}
+input,select,textarea{padding:8px;margin:4px 0 12px;width:100%;box-sizing:border-box}
+.inline input,.inline select{width:auto;margin:0 6px 0 0}
+button,.btn{background:#2d6cdf;color:#fff;border:0;padding:8px 14px;border-radius:5px;cursor:pointer;text-decoration:none;font-size:14px}
+.danger{background:#c0392b}.err{color:#c0392b;margin-bottom:10px}
+.stats{display:flex;gap:12px;flex-wrap:wrap}.stats .card{flex:1;min-width:140px;text-align:center}.stats b{font-size:28px;display:block}
+form.i{display:inline}
+</style></head><body>
+<nav><b style="color:#fff">Task Manager</b>
+<% if (user) { %><a href="/dashboard">Dashboard</a><a href="/projects">Projects</a><a href="/tasks">Tasks</a><span class="sp"></span><span style="color:#fff">Hi, <%= user.name %></span><a href="/logout">Logout</a>
+<% } else { %><span class="sp"></span><a href="/login">Login</a><a href="/register">Register</a><% } %></nav><main>

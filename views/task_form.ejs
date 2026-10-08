@@ -1,0 +1,11 @@
+<%- include('_header') %><div class="card"><h2><%= task.id ? 'Edit' : 'New' %> task</h2>
+<% if (error) { %><div class="err"><%= error %></div><% } %>
+<form method="post" action="/tasks<%= task.id ? '/' + task.id : '' %>">
+<label>Title</label><input name="title" value="<%= task.title || '' %>">
+<label>Description</label><textarea name="description" rows="3"><%= task.description || '' %></textarea>
+<label>Project</label><select name="project_id"><option value="">None</option>
+<% projects.forEach(p => { %><option value="<%= p.id %>" <%= String(p.id) === String(task.project_id) ? 'selected' : '' %>><%= p.name %></option><% }) %></select>
+<label>Priority</label><select name="priority"><% PRIORITIES.forEach(x => { %><option <%= (task.priority || 'Medium') === x ? 'selected' : '' %>><%= x %></option><% }) %></select>
+<label>Status</label><select name="status"><% STATUSES.forEach(x => { %><option <%= (task.status || 'Todo') === x ? 'selected' : '' %>><%= x %></option><% }) %></select>
+<label>Due date</label><input type="date" name="due_date" value="<%= task.due_date || '' %>">
+<button>Save</button></form></div><%- include('_footer') %>
